@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4tt5u26aqtc"]
+
+[ext_resource type="Script" path="res://Scripts/personaje.gd" id="1_s6ltk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j41gy"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_n704m"]
+material = SubResource("StandardMaterial3D_j41gy")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y0qjr"]
+size = Vector3(1, 1, 0.25)
+
+[node name="Node3D" type="CharacterBody3D"]
+script = ExtResource("1_s6ltk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_n704m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_y0qjr")

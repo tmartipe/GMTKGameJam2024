@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://fesnu8sh475l"]
+
+[ext_resource type="Script" path="res://Scenes/GameManager.gd" id="1_4v4wv"]
+[ext_resource type="PackedScene" uid="uid://o0nhfej01h4j" path="res://Scenes/frame.tscn" id="1_hyjpj"]
+[ext_resource type="PackedScene" uid="uid://b4tt5u26aqtc" path="res://Scenes/personaje.tscn" id="2_uk2vp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n5e2k"]
+albedo_color = Color(0.00351917, 0.00351917, 0.00351917, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_5hg78"]
+material = SubResource("StandardMaterial3D_n5e2k")
+size = Vector2(10, 60)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_4v4wv")
+
+[node name="Area3D" parent="." instance=ExtResource("1_hyjpj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.055, 0, -28.1921)
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.982049, -0.0757995, 0.172727, 0.00529798, 0.926429, 0.376432, -0.188553, -0.368759, 0.9102, 0.639159, 1.92126, -0.00900269)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_5hg78")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.8686, 0)
+light_color = Color(0.993213, 0.413878, 1, 1)
+light_energy = 1.235
+
+[node name="Node3D" parent="." instance=ExtResource("2_uk2vp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61591, 0.989426, -4.08203)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 6.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

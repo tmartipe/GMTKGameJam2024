@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://o0nhfej01h4j"]
+
+[ext_resource type="Script" path="res://Scripts/frame.gd" id="1_swp7o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lrb2h"]
+size = Vector3(5, 3, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jsxg"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ur5d1"]
+material = SubResource("StandardMaterial3D_2jsxg")
+size = Vector2(5, 3)
+center_offset = Vector3(0, 1.5, 0)
+
+[node name="Area3D" type="Area3D"]
+script = ExtResource("1_swp7o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+shape = SubResource("BoxShape3D_lrb2h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_ur5d1")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

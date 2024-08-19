@@ -2,11 +2,13 @@ extends CharacterBody3D
 
 @onready var sprite = $Sprite3D
 var currentShape: CompressedTexture2D
-var currentScale: int = 0
+var currentScale: float = 0.1
 var Q:bool
 var W:bool
 var E:bool
-
+var scale_step = 0.1
+var min_scale = 0.1
+var max_scale = 0.5
 	
 
 func _process(_delta):
@@ -18,10 +20,17 @@ func readInputs():
 	Q = Input.is_action_pressed("Q")
 	W = Input.is_action_pressed("W")
 	E = Input.is_action_pressed("E")
-	if(Input.is_action_just_pressed("ScaleUp") && currentScale < 2):
-		++currentScale
-	if(Input.is_action_just_pressed("ScaleDown") && currentScale > -2):
-		--currentScale
+	
+	if(Input.is_action_just_pressed("ScaleUp") && currentScale < max_scale):
+		currentScale += scale_step
+		set_object_scale()
+		
+	if(Input.is_action_just_pressed("ScaleDown") && currentScale > min_scale):
+		currentScale -= scale_step
+		set_object_scale()
+		
+func set_object_scale():
+	sprite.scale = Vector3(currentScale, currentScale, currentScale)
 	
 func changeMaterial():
 	

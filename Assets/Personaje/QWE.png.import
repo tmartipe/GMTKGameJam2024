@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pcfoby4tak5"
-path="res://.godot/imported/R.png-4434f53d8f9b6a063fb40d69474d0618.ctex"
+uid="uid://dla1pk0t2mg2m"
+path="res://.godot/imported/QWE.png-f35c2160e25b646ecd15b347f8fe95df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Personaje/R.png"
-dest_files=["res://.godot/imported/R.png-4434f53d8f9b6a063fb40d69474d0618.ctex"]
+source_file="res://Assets/Personaje/QWE.png"
+dest_files=["res://.godot/imported/QWE.png-f35c2160e25b646ecd15b347f8fe95df.ctex"]
 
 [params]
 

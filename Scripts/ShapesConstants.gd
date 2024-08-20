@@ -1,12 +1,40 @@
 extends Node
 
-var Q = preload("res://Assets/Personaje/Q.png") as CompressedTexture2D
-var W = preload("res://Assets/Personaje/W.png") as CompressedTexture2D
-var R = preload("res://Assets/Personaje/R.png") as CompressedTexture2D
-var QW = preload("res://Assets/Personaje/QW.png") as CompressedTexture2D
-var QE = preload("res://Assets/Personaje/QE.png") as CompressedTexture2D
-var WE = preload("res://Assets/Personaje/WE.png") as CompressedTexture2D
-var ER = preload("res://Assets/Personaje/ER.png") as CompressedTexture2D
-var Default = preload("res://Assets/Personaje/Default.png") as CompressedTexture2D
+var Q = {
+	"comun" : preload("res://Assets/Personaje/Q.png") as CompressedTexture2D,
+	"negro" : preload("res://Assets/Personaje/Negro/Q.png") as CompressedTexture2D,
+	"nombre": "Q"
+	}
+var W = {
+	"comun" : preload("res://Assets/Personaje/W.png") as CompressedTexture2D,
+	"negro" : preload("res://Assets/Personaje/Negro/W.png") as CompressedTexture2D,
+	"nombre": "W"
+	}
+var E = {
+	"comun" : preload("res://Assets/Personaje/E.png") as CompressedTexture2D,
+	"negro" : preload("res://Assets/Personaje/Negro/E.png") as CompressedTexture2D,
+	"nombre": "E"
+	}
+var QW = {
+	"comun" : preload("res://Assets/Personaje/QW.png") as CompressedTexture2D,
+	"negro" : preload("res://Assets/Personaje/Negro/QW.png") as CompressedTexture2D,
+	"nombre": "QW"
+	}
+var QE = {
+	"comun" : preload("res://Assets/Personaje/QE.png") as CompressedTexture2D,
+	"negro" : preload("res://Assets/Personaje/Negro/QE.png") as CompressedTexture2D,
+	"nombre": "QW"
+	}
+var WE = {
+	"comun" : preload("res://Assets/Personaje/WE.png") as CompressedTexture2D,
+	"negro" : preload("res://Assets/Personaje/Negro/WE.png") as CompressedTexture2D,
+	"nombre": "WE"
+	}
+var QWE = {
+	"comun" : preload("res://Assets/Personaje/QWE.png") as CompressedTexture2D,
+	"negro" : preload("res://Assets/Personaje/Negro/QWE.png") as CompressedTexture2D,
+	"nombre": "QWE"
+	}
+var Default = { "comun" = preload("res://Assets/Personaje/Default.png") as CompressedTexture2D, "nombre" = "default" }
 
-var allShapesArray = [Q,W,R,QW,QE,WE]
+var allShapesArray = [Q,W,E,QW,QE,WE,QWE]

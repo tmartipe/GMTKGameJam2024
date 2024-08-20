@@ -1,31 +1,28 @@
 extends Area3D
 
 var pasos:int
-var selectedShape: Color
-@onready var mesh_instance_3d = $MeshInstance3D
+var selectedShape
+@onready var spriteConejo = $SpriteConejoHolder/SpriteConejo as Sprite3D
+var possibleScales = [0.2,0.3,0.4]
+var selectedScale: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var newMaterial = StandardMaterial3D.new()
-	#selectedShape = ShapesConstants.allShapesArray.pick_random()
-	#newMaterial.albedo_color = selectedShape
-	#mesh_instance_3d.set_surface_override_material(0, newMaterial)
-	pasos = 0
-	pass # Replace with function body.
-
+	selectedShape = ShapesConstants.allShapesArray.pick_random()
+	spriteConejo.texture = selectedShape["negro"]
+	selectedScale = possibleScales.pick_random()
+	$SpriteConejoHolder.scale = Vector3(selectedScale, selectedScale, selectedScale)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if (Input.is_action_just_pressed("ScaleUp") || Input.is_action_just_pressed("ScaleDown")):
-		position.z += 3
-		pasos+=1
-	if(pasos > 8):
-		queue_free()
-
+	position = position.move_toward(Vector3(0,0,-1.5),.05)
 
 func _on_body_entered(body):
-	print(selectedShape)
-	if(body.currentShape == selectedShape):
+	print(body.currentShape["nombre"] == selectedShape["nombre"])
+	print(body.scale.x)
+	print(selectedScale)
+	print(selectedScale == body.scale.x)
+	if(body.currentShape["nombre"] == selectedShape["nombre"] && selectedScale == snapped(body.scale.x, 0.1)):
 		GameManager.increase_score(10)
 		print("SCORE!")
 	else:

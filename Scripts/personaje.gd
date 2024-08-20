@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @onready var sprite = $Sprite3D
-var currentShape: CompressedTexture2D
+var currentShape
 var Q:bool
 var W:bool
 var E:bool
@@ -31,9 +31,9 @@ func readInputs():
 
 func changeShape():
 	
-	#if (Q and W and E):
-		#currentShape = ShapesConstants.QWE
-	if(Q and W):
+	if (Q and W and E):
+		currentShape = ShapesConstants.QWE
+	elif(Q and W):
 		currentShape = ShapesConstants.QW
 	elif(W and E):
 		currentShape = ShapesConstants.WE
@@ -44,7 +44,7 @@ func changeShape():
 	elif(W):
 		currentShape = ShapesConstants.W
 	elif(E):
-		currentShape = ShapesConstants.R
+		currentShape = ShapesConstants.E
 	else:
 		currentShape = ShapesConstants.Default
-	sprite.texture = currentShape
+	sprite.texture = currentShape["comun"]

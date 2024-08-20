@@ -1,29 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://fesnu8sh475l"]
+[gd_scene load_steps=11 format=3 uid="uid://fesnu8sh475l"]
 
 [ext_resource type="Script" path="res://Scenes/GameManager.gd" id="1_4v4wv"]
 [ext_resource type="PackedScene" uid="uid://o0nhfej01h4j" path="res://Scenes/frame.tscn" id="1_hyjpj"]
 [ext_resource type="PackedScene" uid="uid://b4tt5u26aqtc" path="res://Scenes/personaje.tscn" id="2_uk2vp"]
+[ext_resource type="Texture2D" uid="uid://cmde8fgi3ugjp" path="res://Assets/Sky_Day_BlueSky_Equirect.png" id="3_mxuw8"]
+[ext_resource type="Texture2D" uid="uid://bfmte8st8y4ta" path="res://Assets/World/FondoPiso.png" id="4_k6jtp"]
+[ext_resource type="Texture2D" uid="uid://c1k2apn7uso0q" path="res://Assets/World/FondoMadera.png" id="5_gjewd"]
+[ext_resource type="Texture2D" uid="uid://dl3q08fdctj31" path="res://Assets/World/FondoArboles.png" id="7_igeag"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n5e2k"]
-albedo_color = Color(0.00351917, 0.00351917, 0.00351917, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ra7b8"]
+panorama = ExtResource("3_mxuw8")
 
-[sub_resource type="QuadMesh" id="QuadMesh_5hg78"]
-material = SubResource("StandardMaterial3D_n5e2k")
-size = Vector2(10, 60)
+[sub_resource type="Sky" id="Sky_pfl4u"]
+sky_material = SubResource("PanoramaSkyMaterial_ra7b8")
+
+[sub_resource type="Environment" id="Environment_50bgj"]
+background_mode = 2
+sky = SubResource("Sky_pfl4u")
+ambient_light_source = 3
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_4v4wv")
 
 [node name="Area3D" parent="." instance=ExtResource("1_hyjpj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.055, 0, -28.1921)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.415293, -21)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.982049, -0.0757995, 0.172727, 0.00529798, 0.926429, 0.376432, -0.188553, -0.368759, 0.9102, 0.639159, 1.92126, -0.00900269)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0)
-mesh = SubResource("QuadMesh_5hg78")
+environment = SubResource("Environment_50bgj")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10.8686, 0)
@@ -31,10 +35,87 @@ light_color = Color(0.993213, 0.413878, 1, 1)
 light_energy = 1.235
 
 [node name="Node3D" parent="." instance=ExtResource("2_uk2vp")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, -3)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, -2)
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 6.0
 autostart = true
+
+[node name="PisoContainer" type="Node" parent="."]
+
+[node name="Piso" type="Sprite3D" parent="PisoContainer"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, -0.0716381, 0, -5.4912)
+sorting_offset = 2.0
+texture = ExtResource("4_k6jtp")
+
+[node name="Piso3" type="Sprite3D" parent="PisoContainer"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, -0.0716386, -9.53674e-07, -10.5568)
+sorting_offset = 2.0
+texture = ExtResource("4_k6jtp")
+
+[node name="Piso4" type="Sprite3D" parent="PisoContainer"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, -0.0716381, 0, -15.9266)
+sorting_offset = 2.0
+texture = ExtResource("4_k6jtp")
+
+[node name="Piso5" type="Sprite3D" parent="PisoContainer"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, -0.0716381, 0, -21.2888)
+sorting_offset = 2.0
+texture = ExtResource("4_k6jtp")
+
+[node name="Piso2" type="Sprite3D" parent="PisoContainer"]
+transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, -0.07, -0.108792, -0.45)
+sorting_offset = 2.0
+texture = ExtResource("4_k6jtp")
+
+[node name="Fondo" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.012, 2.20806, -23.7089)
+texture = ExtResource("5_gjewd")
+
+[node name="ParedIzquierdaContainer2" type="Node" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="ParedIzquierdaContainer2"]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -4.8, 2.275, -2.49)
+modulate = Color(0.329158, 0.329158, 0.329158, 1)
+texture = ExtResource("5_gjewd")
+
+[node name="Sprite3D2" type="Sprite3D" parent="ParedIzquierdaContainer2"]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -4.8, 2.25, -12.0259)
+modulate = Color(0.329158, 0.329158, 0.329158, 1)
+texture = ExtResource("5_gjewd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="ParedIzquierdaContainer2"]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -4.8, 2.25, -21.5019)
+modulate = Color(0.329158, 0.329158, 0.329158, 1)
+texture = ExtResource("5_gjewd")
+
+[node name="ParedDerechaContainer" type="Node" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="ParedDerechaContainer"]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 4.5, 2.5, -2.56399)
+modulate = Color(0.329158, 0.329158, 0.329158, 1)
+texture = ExtResource("5_gjewd")
+
+[node name="Sprite3D2" type="Sprite3D" parent="ParedDerechaContainer"]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 4.5, 2.5, -12.1256)
+modulate = Color(0.329158, 0.329158, 0.329158, 1)
+texture = ExtResource("5_gjewd")
+
+[node name="Sprite3D3" type="Sprite3D" parent="ParedDerechaContainer"]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 4.5, 2.5, -21.6957)
+modulate = Color(0.329158, 0.329158, 0.329158, 1)
+texture = ExtResource("5_gjewd")
+
+[node name="ParedIzquierdaContainer" type="Node" parent="."]
+
+[node name="Arboless" type="Sprite3D" parent="."]
+transform = Transform3D(0.49364, 0, 0, 0, 0.558448, 0, 0, 0, 0.7, 0, 2.933, -3.094)
+sorting_offset = 2.0
+texture = ExtResource("7_igeag")
+
+[node name="Arboless2" type="Sprite3D" parent="."]
+transform = Transform3D(0.49364, 0, 0, 0, 0.558448, 0, 0, 0, 0.7, 0, 2.933, -9.23023)
+sorting_offset = 2.0
+texture = ExtResource("7_igeag")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

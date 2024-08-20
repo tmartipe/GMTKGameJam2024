@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6p50e5po22v8"]
+[gd_scene load_steps=11 format=3 uid="uid://b6p50e5po22v8"]
 
 [ext_resource type="Texture2D" uid="uid://che4dmie1i2w0" path="res://Assets/UI/MenuFondo.png" id="1_ggsj2"]
 [ext_resource type="Texture2D" uid="uid://dauc4iq3cj617" path="res://Assets/UI/BotonStart.png" id="2_qq1fn"]
@@ -6,7 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://bixurq5715ri7" path="res://Assets/UI/BotonCredits.png" id="3_8gtao"]
 [ext_resource type="Texture2D" uid="uid://bu8jmblmnkahu" path="res://Assets/UI/BotonQuit.png" id="4_tqhp3"]
 [ext_resource type="Texture2D" uid="uid://b54yqfrqe0mbr" path="res://Assets/UI/BotonCreditsPressed.png" id="5_o145e"]
+[ext_resource type="Script" path="res://Scripts/button_credits.gd" id="6_5p0tp"]
 [ext_resource type="Texture2D" uid="uid://bumc6lwldkc1h" path="res://Assets/UI/BotonQuitPressed.png" id="7_y4e6q"]
+[ext_resource type="Script" path="res://Scripts/button_quit.gd" id="9_12i2x"]
+[ext_resource type="PackedScene" uid="uid://ucne20tjjfe1" path="res://Scenes/credits.tscn" id="9_lu6n4"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -48,8 +51,26 @@ texture_pressed = ExtResource("3_5ur2a")
 layout_mode = 2
 texture_normal = ExtResource("3_8gtao")
 texture_pressed = ExtResource("5_o145e")
+script = ExtResource("6_5p0tp")
 
 [node name="ButtonQuit" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 texture_normal = ExtResource("4_tqhp3")
 texture_pressed = ExtResource("7_y4e6q")
+script = ExtResource("9_12i2x")
+
+[node name="Credits" parent="." instance=ExtResource("9_lu6n4")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.156
+anchor_top = 0.113
+anchor_right = 0.834
+anchor_bottom = 0.881
+offset_left = 0.47998
+offset_top = -0.0400085
+offset_right = -0.280151
+offset_bottom = -0.480042
+
+[connection signal="pressed" from="GridContainer/ButtonCredits" to="GridContainer/ButtonCredits" method="_on_pressed"]
+[connection signal="pressed" from="GridContainer/ButtonQuit" to="GridContainer/ButtonQuit" method="_on_pressed"]

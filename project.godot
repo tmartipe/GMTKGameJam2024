@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-ShapesConstants="*res://ShapesConstants.gd"
+ShapesConstants="*res://Scripts/ShapesConstants.gd"
 
 [display]
 

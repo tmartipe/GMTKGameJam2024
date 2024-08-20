@@ -6,7 +6,7 @@ var Q:bool
 var W:bool
 var E:bool
 var scale_step = Vector3(0.1,0.1,0.1)
-var min_scale := 0.21
+var min_scale := 0.22
 var max_scale := 0.4
 
 func _ready():
@@ -24,10 +24,10 @@ func readInputs():
 	
 	if(Input.is_action_just_pressed("ScaleUp") && scale.x < max_scale):
 		scale += scale_step
-		position = Vector3(0,0,-3)
+		position = Vector3(0,0,-2)
 	if(Input.is_action_just_pressed("ScaleDown") && scale.x > min_scale):
 		scale -= scale_step
-		position = Vector3(0,0,-3)
+		position = Vector3(0,0,-2)
 
 func changeShape():
 	

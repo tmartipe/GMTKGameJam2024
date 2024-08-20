@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="GMTKGameJam2024"
-run/main_scene="res://Scenes/main_scene.tscn"
-config/features=PackedStringArray("4.2", "Mobile")
+run/main_scene="res://Scenes/MainMenu.tscn"
+config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
-ShapesConstants="*res://ShapesConstants.gd"
+ShapesConstants="*res://Scripts/ShapesConstants.gd"
 GameManager="*res://Scripts/GameManager.gd"
 
 [display]

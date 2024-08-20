@@ -18,10 +18,6 @@ func _process(_delta):
 	position = position.move_toward(Vector3(0,0,-1.5),.05)
 
 func _on_body_entered(body):
-	print(body.currentShape["nombre"] == selectedShape["nombre"])
-	print(body.scale.x)
-	print(selectedScale)
-	print(selectedScale == body.scale.x)
 	if(body.currentShape["nombre"] == selectedShape["nombre"] && selectedScale == snapped(body.scale.x, 0.1)):
 		GameManager.increase_score(10)
 		print("SCORE!")

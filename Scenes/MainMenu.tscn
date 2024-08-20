@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6p50e5po22v8"]
+[gd_scene load_steps=12 format=3 uid="uid://b6p50e5po22v8"]
 
 [ext_resource type="Texture2D" uid="uid://che4dmie1i2w0" path="res://Assets/UI/MenuFondo.png" id="1_ggsj2"]
 [ext_resource type="Texture2D" uid="uid://dauc4iq3cj617" path="res://Assets/UI/BotonStart.png" id="2_qq1fn"]
 [ext_resource type="Texture2D" uid="uid://tin75u2yiih4" path="res://Assets/UI/BotonStartPressed.png" id="3_5ur2a"]
 [ext_resource type="Texture2D" uid="uid://bixurq5715ri7" path="res://Assets/UI/BotonCredits.png" id="3_8gtao"]
+[ext_resource type="Script" path="res://Scripts/button_start.gd" id="4_bw5kb"]
 [ext_resource type="Texture2D" uid="uid://bu8jmblmnkahu" path="res://Assets/UI/BotonQuit.png" id="4_tqhp3"]
 [ext_resource type="Texture2D" uid="uid://b54yqfrqe0mbr" path="res://Assets/UI/BotonCreditsPressed.png" id="5_o145e"]
 [ext_resource type="Script" path="res://Scripts/button_credits.gd" id="6_5p0tp"]
@@ -46,6 +47,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 texture_normal = ExtResource("2_qq1fn")
 texture_pressed = ExtResource("3_5ur2a")
+script = ExtResource("4_bw5kb")
 
 [node name="ButtonCredits" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
@@ -72,5 +74,6 @@ offset_top = -0.0400085
 offset_right = -0.280151
 offset_bottom = -0.480042
 
+[connection signal="pressed" from="GridContainer/ButtonStart" to="GridContainer/ButtonStart" method="_on_pressed"]
 [connection signal="pressed" from="GridContainer/ButtonCredits" to="GridContainer/ButtonCredits" method="_on_pressed"]
 [connection signal="pressed" from="GridContainer/ButtonQuit" to="GridContainer/ButtonQuit" method="_on_pressed"]

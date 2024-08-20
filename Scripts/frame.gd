@@ -24,8 +24,12 @@ func _process(_delta):
 
 
 func _on_body_entered(body):
+	print(selectedShape)
 	if(body.currentShape == selectedShape):
+		GameManager.increase_score(10)
 		print("SCORE!")
 	else:
+		GameManager.decrease_score(10)
 		print("MISS!")
+		print("Current Score: ", GameManager.player_score)
 	queue_free()
